@@ -104,7 +104,7 @@
     
     <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists">
     <br><br>
-    <div v-for="item in list">
+    <div v-for="item in visibleList">
         <input type="text" v-model="item[0]">
         <br>
         <div v-for="subitem in item[1]">
@@ -148,7 +148,7 @@
 			methods: {
                 init(){
                     numOfLists = this.list.length;
-                    this.displayList();
+                    this.changeNumOfLists();
                 },
                 changeNumOfLists() {
                     while(this.numOfLists>this.list.length){
