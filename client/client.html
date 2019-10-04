@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Our simple HTTP server</title>
+  <meta charset="utf-8"/>
+  <title>Image List</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+  <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    
   <script type="text/babel">
 
 
@@ -96,10 +99,21 @@
   </script>
 </head>
 <body>
-  <section id="top">
-    <h3>POST Status Code Tests</h3>
+  <section id="root">
+    <h3>Image List</h3>
     
-    <form id="nameForm" action="/addUser" method="post">
+    <input type="number" name="Entries" v-model="numOfLists" min=0 @change="changeNumOfLists">
+    <br><br>
+    <div v-for="item in list">
+        <input type="text" v-model="item[0]">
+        <br>
+        <div v-for="subitem in item[1]">
+            <input type="text" v-model="subitem">
+        </div>
+        <hr><br>
+    </div>
+         
+    <form id="nameForm" action="/addUser" method="post" style="display: none">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
       <label for="age">Age: </label>
@@ -107,9 +121,7 @@
       <input type="submit" value="Add User" />
     </form>
     
-    
-    
-    <form id="userForm" action="/getUsers" method="get">
+    <form id="userForm" action="/getUsers" method="get" style="display: none">
       <select id='urlField'>
         <option value='/getUsers'>/getUsers</option>
         <option value='/notReal'>/notReal</option>
@@ -121,9 +133,33 @@
       <input type="submit" value="Get User" />
     </form>
     
-    
   </section>
   <section id="content">
   </section>
+  <script>
+		//Vue app
+		const app = new Vue({
+			el: '#root',
+			data: {
+				list: [["frg",["djd","fnjfied","jmidkec"]],["huji",["hji","jio","oijp"]]],
+                numOfLists: 0
+			},
+			methods: {
+                init(){
+                    numOfLists = this.list.length;
+                },
+                changeNumOfLists() {
+                    while(this.numOfLists>this.list.length){
+                        this.list.push(["",[""]]);
+                    }
+                    while(this.numOfLists<this.list.length){
+                        this.list.pop();
+                    }
+				}
+			}
+		})
+        
+		app.init();
+	</script>
 </body>
 </html>
