@@ -102,7 +102,7 @@
   <section id="root">
     <h3>Image List</h3>
     
-    <input type="number" name="Entries" v-model="numOfLists" min=0 @change="changeNumOfLists">
+    <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists">
     <br><br>
     <div v-for="item in list">
         <input type="text" v-model="item[0]">
@@ -142,20 +142,26 @@
 			el: '#root',
 			data: {
 				list: [["frg",["djd","fnjfied","jmidkec"]],["huji",["hji","jio","oijp"]]],
+                visibleList: [],
                 numOfLists: 0
 			},
 			methods: {
                 init(){
                     numOfLists = this.list.length;
+                    this.displayList();
                 },
                 changeNumOfLists() {
                     while(this.numOfLists>this.list.length){
                         this.list.push(["",[""]]);
                     }
-                    while(this.numOfLists<this.list.length){
-                        this.list.pop();
+                    this.displayList();
+				},
+                displayList(){
+                    this.visibleList = [];
+                    for(let n = 0; n < this.numOfLists; n++){
+                        this.visibleList.push(this.list[n]);
                     }
-				}
+                }
 			}
 		})
         
