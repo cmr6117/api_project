@@ -104,15 +104,17 @@
     <div>{{list}}</div>
     <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists">
     <br><br>
-    <div class="listPanel" v-for="item in genIntList(numOfLists)">
-        <div>
-            <input type="text" v-model="list[item][0]">
+    <div id="listContainer">
+        <div class="listPanel" v-for="item in genIntList(numOfLists)">
+            <div>
+                <input type="text" v-model="list[item][0]">
+            </div>
+            <br>
+            <div v-for="subitem in genIntList(list[item][1].length)">
+                <input type="text" v-model="list[item][1][subitem]">
+            </div>
+            <hr>
         </div>
-        <br>
-        <div v-for="subitem in genIntList(list[item][1].length)">
-            <input type="text" v-model="list[item][1][subitem]">
-        </div>
-        <hr>
     </div>
          
     <form id="nameForm" action="/addUser" method="post" style="display: none">
