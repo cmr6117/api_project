@@ -106,9 +106,9 @@
     <br><br>
     <div id="listContainer">
         <div class="listPanel" v-for="item in genIntList(numOfLists)">
-            <input id="listName" type="text" v-model="list[item][0]">
-            <br>
-            <input v-for="subitem in genIntList(list[item][1].length)" id="itemName" type="text" v-model="list[item][1][subitem]">
+            <input class="listName" type="text" v-model="list[item][0]">
+            <br><br>
+            <input v-for="subitem in genIntList(list[item][1].length)" class="itemName" type="text" v-model="list[item][1][subitem]">
             <hr>
         </div>
     </div>

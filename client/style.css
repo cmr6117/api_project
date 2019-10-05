@@ -15,7 +15,6 @@ input.listName{
 input.itemName{
     width: 100px;
     height: 100px;
-    float: left;
 }
 .listPanel{
     float: left;
@@ -24,7 +23,7 @@ input.itemName{
     border-width: 2px;
     padding: 3px;
     margin: 1px;
-    width: 50%;
+    width: 48%;
 }
 #listContainer{
     display: inline-block;
