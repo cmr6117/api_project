@@ -9,12 +9,20 @@ html, body {
 input{
     text-align: center;
 }
+input.listName{
+    width: 100%;
+}
+input.itemName{
+    width
+}
 .listPanel{
     float: left;
-    display: inline-block;
+    display: block;
     border-style: solid;
     border-width: 2px;
     padding: 3px;
+    margin: 1px;
+    width: 50%;
 }
 #listContainer{
     display: inline-block;

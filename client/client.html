@@ -100,19 +100,15 @@
 </head>
 <body>
   <section id="root">
-    <h3>Image List</h3>
+    <h1>Image List</h1>
     <div>{{list}}</div>
     <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists">
     <br><br>
     <div id="listContainer">
         <div class="listPanel" v-for="item in genIntList(numOfLists)">
-            <div>
-                <input type="text" v-model="list[item][0]">
-            </div>
+            <input id="listName" type="text" v-model="list[item][0]">
             <br>
-            <div v-for="subitem in genIntList(list[item][1].length)">
-                <input type="text" v-model="list[item][1][subitem]">
-            </div>
+            <input v-for="subitem in genIntList(list[item][1].length)" id="itemName" type="text" v-model="list[item][1][subitem]">
             <hr>
         </div>
     </div>
