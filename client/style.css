@@ -13,7 +13,9 @@ input.listName{
     width: 100%;
 }
 input.itemName{
-    width
+    width: 100px;
+    height: 100px;
+    float: left;
 }
 .listPanel{
     float: left;
