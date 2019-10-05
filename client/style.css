@@ -17,6 +17,8 @@ input{
     padding: 3px;
 }
 #listContainer{
-    margin-left: 10px;
-    margin-right: 10px;
+    display: inline-block;
+    margin: auto;
+    max-width: 1600px;
+    padding: 5px;
 }
