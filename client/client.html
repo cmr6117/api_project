@@ -102,7 +102,9 @@
   <section id="root">
     <h1>Image List</h1>
     <div>{{list}}</div>
-    <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists">
+    Number Of Lists: <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists"> 
+    <br>
+    Display URLs: <input type="checkbox" name="urlDisplay" @change="updateViewURLS($event)"><br>
     <br><br>
     <div id="listContainer">
         <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:style="{backgroundColor: list[item][1]}">
@@ -112,6 +114,11 @@
             <br>
             <input placeholder="Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)">
             <button class="newListItemButton">+</button>
+            <br>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
         </div>
     </div>
          
@@ -184,6 +191,10 @@
                 updateItemURL(e, listNum, itemNum){
                     e.target.parentElement.backgroundImage = "url(" + this.list[listNum][4][itemNum] + ")";
                     console.log(e.target.parentElement.backgroundImage);
+                },
+                updateViewURLS(e){
+                    console.log(e.value);
+                    document.getElementsByClassName('itemName').style.color = rgba(0,0,0,1.0);
                 }
 			}
 		})
