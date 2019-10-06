@@ -10,6 +10,7 @@ input{
     text-align: center;
     word-wrap: break-word;
     margin: 2px;
+    transition: transform .2s;
 }
 input.listName{
     width: 90%;
@@ -28,6 +29,12 @@ button.newListItemButton{
     height: 100px;
     border-width: 2px;
     padding: 3px;
+    transition: transform .2s;
+}
+input:hover {
+    transform: scale(1.05);
+}
+</style>
 }
 .listPanel{
     float: left;
