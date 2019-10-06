@@ -108,13 +108,16 @@
         <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:style="list[item][1]">
             <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
             <br>
-            List Color: <input class="listColor" type="color" v-model="list[item][1][subitem]">
+            List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
             <input placeholder="Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]">
             <button class="newListItemButton">+</button>
         </div>
     </div>
          
+      
+      
+      
     <form id="nameForm" action="/addUser" method="post" style="display: none">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
@@ -170,6 +173,9 @@
                         intList.push(n);
                     }
                     return intList;
+                },
+                updateListColor(e, listNum){
+                    
                 }
 			}
 		})
