@@ -31,9 +31,6 @@ button.newListItemButton{
     padding: 3px;
     transition: transform .2s;
 }
-input:hover {
-    transform: scale(1.05);
-}
 .listPanel{
     float: left;
     display: block;
@@ -45,10 +42,20 @@ input:hover {
     margin: 3px;
     max-width: 500px;
     width: 100%;
+    transition: transform .2s;
 }
 #listContainer{
     display: inline-block;
     margin: auto;
     max-width: 1600px;
     padding: 5px;
+}
+input:hover {
+    transform: scale(1.05);
+}
+button.newListItemButton:hover {
+    transform: scale(1.05);
+}
+.listPanel:hover {
+    transform: scale(1.05);
 }
