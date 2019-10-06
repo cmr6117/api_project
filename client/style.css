@@ -9,6 +9,7 @@ html, body {
 input{
     text-align: center;
     word-wrap: break-word;
+    margin: 2px;
 }
 input.listName{
     width: 90%;
@@ -28,6 +29,7 @@ input.itemName{
     padding-top: 6px;
     padding-bottom: 6px;
     margin: 1px;
+    min-width: 48%;
     width: 48%;
 }
 #listContainer{
