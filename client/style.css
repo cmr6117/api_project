@@ -34,8 +34,6 @@ button.newListItemButton{
 input:hover {
     transform: scale(1.05);
 }
-</style>
-}
 .listPanel{
     float: left;
     display: block;
