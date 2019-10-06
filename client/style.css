@@ -20,6 +20,10 @@ input.itemName{
     width: 100px;
     height: 100px;
 }
+button.newListItemButton{
+    width: 100px;
+    height: 100px;
+}
 .listPanel{
     float: left;
     display: block;
