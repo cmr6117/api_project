@@ -19,14 +19,14 @@ input.listName{
 input.itemName{
     width: 100px;
     height: 100px;
-    border: 2px;
+    border-width: 2px;
     padding: 3px;
     margin: 2px;
 }
 button.newListItemButton{
     width: 100px;
     height: 100px;
-    border: 2px;
+    border-width: 2px;
     padding: 3px;
 }
 .listPanel{
