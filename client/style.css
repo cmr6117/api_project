@@ -8,9 +8,12 @@ html, body {
 }
 input{
     text-align: center;
+    word-wrap: break-word;
 }
 input.listName{
-    width: 100%;
+    width: 90%;
+    height: 32px;
+    font-size: 20px;
 }
 input.itemName{
     width: 100px;
@@ -22,6 +25,8 @@ input.itemName{
     border-style: solid;
     border-width: 2px;
     padding: 3px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     margin: 1px;
     width: 48%;
 }
