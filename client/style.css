@@ -23,6 +23,12 @@ input.itemName{
     border-width: 2px;
     padding: 3px;
     margin: 2px;
+    
+    background-image: url("https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png");
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 button.newListItemButton{
     width: 100px;
