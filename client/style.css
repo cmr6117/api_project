@@ -28,9 +28,9 @@ input.itemName{
     padding: 3px;
     padding-top: 6px;
     padding-bottom: 6px;
-    margin: 1px;
-    min-width: 48%;
-    width: 48%;
+    margin: 3px;
+    max-width: 500px;
+    width: 100%;
 }
 #listContainer{
     display: inline-block;
