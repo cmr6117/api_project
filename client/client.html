@@ -105,7 +105,7 @@
     <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 @change="changeNumOfLists">
     <br><br>
     <div id="listContainer">
-        <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:style="background-color:list[item][1]">
+        <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:style="{background-color: list[item][1]}">
             <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]"  @change="updateListColor($event, item)">
