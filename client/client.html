@@ -157,7 +157,13 @@
                 },
                 changeNumOfLists() {
                     while(this.numOfLists>this.list.length){
-                        this.list.push(["","#dae1ed","","",[""]]);
+                        this.list.push([
+                            "", //List Name
+                            ["#dae1ed","#d7f9ce","#efebd8","#f8cfe4","#c8cfff"][Math.floor(Math.random() * 5)], //List BG Color
+                            "", //Reserved Slot
+                            "", //Reserved Slot
+                            [""] //List Items
+                        ]);
                         //[List Name, Hex Value, ]
                     }
                     this.displayList();
