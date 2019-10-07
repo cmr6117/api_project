@@ -107,12 +107,12 @@
     Display URLs: <input type="checkbox" name="urlDisplay" @change="updateViewURLS($event)"><br>
     <br><br>
     <div id="listContainer">
-        <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:style="{ backgroundImage: `url(${list[item][1]})` }">
+        <div class="listPanel" v-for="item in genIntList(numOfLists)">
             <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
-            <input placeholder="Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)">
+            <input placeholder="Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][1]})` }">
             <button class="newListItemButton">+</button>
         </div>
     </div>
