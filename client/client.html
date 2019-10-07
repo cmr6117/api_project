@@ -112,7 +112,7 @@
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
-            <input onClick="this.select();" placeholder="Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
+            <input onClick="this.select();" placeholder="Paste Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
             <button class="newListItemButton">+</button>
         </div>
     </div>
