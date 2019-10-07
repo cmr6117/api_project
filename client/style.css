@@ -16,6 +16,7 @@ input.listName{
     width: 90%;
     height: 32px;
     font-size: 20px;
+    max-width: 300px;
 }
 input.itemName{
     width: 100px;
@@ -44,14 +45,13 @@ button.newListItemButton{
     padding-top: 6px;
     padding-bottom: 6px;
     margin: 3px;
-    max-width: 500px;
-    width: 100%;
+    width: 400px;
     transition: transform .2s;
 }
 #listContainer{
     display: inline-block;
     margin: auto;
-    max-width: 1600px;
+    width: 1250px;
     padding: 5px;
 }
 input:hover {
