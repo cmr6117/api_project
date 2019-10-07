@@ -114,17 +114,10 @@
             <br>
             <input placeholder="Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)">
             <button class="newListItemButton">+</button>
-            <br>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
         </div>
     </div>
-         
-      background-image: url("");
-      
-      
+    
+    
     <form id="nameForm" action="/addUser" method="post" style="display: none">
       <label for="name">Name: </label>
       <input id="nameField" type="text" name="name" />
