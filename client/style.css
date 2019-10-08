@@ -36,7 +36,6 @@ button.newListItemButton{
     height: 100px;
     padding: 0px;
     margin-bottom: 5px;
-    font-size: 7px;
     vertical-align: text-bottom;    
     transition: transform .2s;
 }
@@ -70,6 +69,7 @@ button.newListItemButton{
         width: 16px;
         height: 32px;
         border-width: 2px;
+        font-size: 7px;
     }
     input.listName{
         height: 10px;
