@@ -34,8 +34,9 @@ input.itemName{
 button.newListItemButton{
     width: 50px;
     height: 100px;
-    padding: 3px;
+    padding: 0px;
     margin-bottom: 5px;
+    font-size: 7px;
     vertical-align: text-bottom;    
     transition: transform .2s;
 }
