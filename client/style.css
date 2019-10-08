@@ -23,8 +23,9 @@ input.itemName{
     height: 15px;
     border-width: 2px;
     margin: 2px;
-    padding-top: 85px;
     font-size: 8px;
+    padding-top: 85px;
+    vertical-align: text-bottom;
     background-color: #cccccc;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,9 +34,9 @@ input.itemName{
 button.newListItemButton{
     width: 100px;
     height: 100px;
-    border-width: 2px;
     padding: 3px;
-    
+    margin-bottom: 5px;
+    vertical-align: text-bottom;    
     transition: transform .2s;
 }
 .listPanel{
@@ -58,9 +59,11 @@ button.newListItemButton{
         border-width: 1px
     }
     input.itemName{
-        width: 30px;
-        height: 30px;
-        font-size: 5px;
+        width: 32px;
+        height: 7px;
+        padding: 0;
+        padding-top: 25px;
+        font-size: 4px;
     }
     button.newListItemButton{
         width: 32px;
