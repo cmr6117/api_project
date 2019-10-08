@@ -95,3 +95,6 @@ button.newListItemButton:hover {
 .listPanel:hover {
     transform: scale(1.05);
 }
+span{
+    display: inline-block;
+}
