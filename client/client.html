@@ -112,7 +112,10 @@
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
-            <input onClick="this.select();" placeholder="Paste Image URL" v-for="subitem in genIntList(list[item][4].length)" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
+            <div class="item" v-for="subitem in genIntList(list[item][4].length)">
+                <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
+                <input v-for="subitem in genIntList(list[item][5].length)" class="itemLabel" type="text" v-model="list[item][5][subitem]">
+            </div>
             <span>
                 <button class="newListItemButton" v-on:click="addItemToList($event, item)">+</button>
                 <button class="newListItemButton" v-on:click="subtractItemFromList($event, item)">-</button>
@@ -166,6 +169,7 @@
                             "", //Reserved Slot, 2
                             "", //Reserved Slot, 3
                             [""] //List Items, 4
+                            [""] //Item Names, 5
                         ]);
                     }
                     this.displayList();
@@ -185,7 +189,6 @@
                 },
                 updateItemURL(e, listNum, itemNum){
                     e.target.parentElement.backgroundImage = "url(" + this.list[listNum][4][itemNum] + ")";
-                    console.log(e.target.parentElement.backgroundImage);
                 },
                 updateViewURLS(e){
                     console.log(e.value);
@@ -193,9 +196,11 @@
                 },
                 addItemToList(e, listNum){
                     this.list[listNum][4].push("");
+                    this.list[listNum][5].push("");
                 },
                 subtractItemFromList(e, listNum){
                     this.list[listNum][4].pop();
+                    this.list[listNum][5].pop();
                 }
 			}
 		})

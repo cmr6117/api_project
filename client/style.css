@@ -18,6 +18,9 @@ input.listName{
     font-size: 20px;
     max-width: 300px;
 }
+.item{
+    
+}
 input.itemName{
     width: 100px;
     height: 15px;
@@ -31,6 +34,9 @@ input.itemName{
     background-repeat: no-repeat;
     background-size: cover;
 }
+input.itemLabel{
+    width: 100px;
+}
 button.newListItemButton{
     width: 50px;
     height: 100px;
@@ -40,7 +46,6 @@ button.newListItemButton{
     transition: transform .2s;
 }
 .listPanel{
-    float: left;
     display: block;
     border-style: solid;
     border-width: 2px;
@@ -48,7 +53,9 @@ button.newListItemButton{
     padding-top: 6px;
     padding-bottom: 6px;
     margin: 2px;
-    width: 31.5%;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
     transition: transform .2s;
 }
 @media only screen and (max-width: 1000px) {
