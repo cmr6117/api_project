@@ -114,7 +114,8 @@
             <br>
             <div class="item" v-for="subitem in genIntList(list[item][4].length)">
                 <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
-                <input v-for="subitem in genIntList(list[item][5].length)" class="itemLabel" type="text" v-model="list[item][5][subitem]">
+                <br>
+                <input class="itemLabel" type="text" v-model="list[item][5][subitem]">
             </div>
             <span>
                 <button class="newListItemButton" v-on:click="addItemToList($event, item)">+</button>
