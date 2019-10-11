@@ -58,36 +58,6 @@ button.newListItemButton{
     margin-bottom: 10px;
     transition: transform .2s;
 }
-@media only screen and (max-width: 1000px) {
-    .listPanel {
-        width: 30%;
-        margin: 1px;
-        font-size: 5px;
-        border-width: 1px
-    }
-    input.itemName{
-        width: 32px;
-        height: 7px;
-        padding: 0;
-        padding-top: 25px;
-        font-size: 4px;
-    }
-    button.newListItemButton{
-        width: 16px;
-        height: 32px;
-        border-width: 2px;
-        font-size: 7px;
-    }
-    input.listName{
-        height: 10px;
-        font-size: 5px;
-    }
-    .listColor{
-        width: 30px;
-        height: 8px;
-    }
-}
-#listContainer{
     display: block;
     margin: auto;
     width: 100%;
