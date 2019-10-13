@@ -108,3 +108,6 @@ span{
   opacity: 0;
   transform: translateY(30px);
 }
+.sizeInput{
+    width: 50px;
+}

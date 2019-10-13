@@ -102,9 +102,9 @@
   <section id="root">
     <h1>Image List</h1>
     <div>{{list}}</div>
-    Number Of Lists: <input type="number" name="Entries" v-model="numOfLists" value=2 min=0 max=15 @change="changeNumOfLists"> 
+    Number Of Lists: <input type="number" name="Entries" class="sizeInput" v-model="numOfLists" value=2 min=0 max=15 @change="changeNumOfLists"> 
     <br>
-    Display URLs: <input type="checkbox" name="urlDisplay" @change="updateViewURLS($event)"><br>
+    Display URLs: <input type="checkbox" name="urlDisplay" class="sizeInput" @change="updateViewURLS($event)"><br>
     <br><br>
     <div id="listContainer">
     <transition-group name="list" tag="p">
