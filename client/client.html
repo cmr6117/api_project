@@ -119,7 +119,7 @@
             <transition-group name="list" tag="p">
                 <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
                     <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ 
-                    backgroundImage: `url(${list[item][4][subitem]})`, width: ${list[item][2]}, height: ${list[item][3]}">
+                    backgroundImage: `url(${list[item][4][subitem]})`, width: ${list[item][2]}, height: ${list[item][3]}"}>
                     <br>
                     <input class="itemLabel" type="text" v-model="list[item][5][subitem]" v-bind:style="{width: list[item][2]}">
                 </div>
