@@ -162,12 +162,14 @@
 			data: {
 				list: [],
                 visibleList: [],
-                numOfLists: 2
+                numOfLists: 2,
+                uuid: "",
 			},
 			methods: {
                 init(){
                     numOfLists = this.list.length;
                     this.changeNumOfLists();
+                    this.autofillQueryInformation();
                 },
                 changeNumOfLists() {
                     while(this.numOfLists>this.list.length){
@@ -220,10 +222,17 @@
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemName").style.width = this.list[item][2];
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemName").style.height = this.list[item][3];
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemLabel").style.width = this.list[item][2];
+                },
+                autofillQueryInformation(){
+                    let url_string = window.location.href;
+                    let url = new URL(url_string);
+                    this.uuid = url.searchParams.get("uuid");
+                    console.log(this.uuid);
                 }
 			}
 		})
         app.init();
+        
 	</script>
 </body>
 </html>
