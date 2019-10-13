@@ -119,7 +119,7 @@
                     <br>
                     <input class="itemLabel" type="text" v-model="list[item][5][subitem]">
                 </div>
-                <span>
+                <span v-bind:key="subitem">
                     <button id="addButton" class="newListItemButton" v-on:click="addItemToList($event, item)">+</button>
                     <button id="subtractButton" class="newListItemButton" v-on:click="subtractItemFromList($event, item)">-</button>
                 </span>
