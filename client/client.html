@@ -108,14 +108,14 @@
     <br><br>
     <div id="listContainer">
     <transition-group name="list" tag="p">
-        <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:key="item" v-bind:style="{backgroundColor: list[item][1]}">
+        <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:key="item" v-bind:style="{backgroundColor: hexToRGBA(list[item][1],0.5)}">
             <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
             <transition-group name="list" tag="p">
                 <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
-                    <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${hexToRGBA(list[item][4][subitem], 0.5)})` }">
+                    <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
                     <br>
                     <input class="itemLabel" type="text" v-model="list[item][5][subitem]">
                 </div>
