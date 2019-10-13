@@ -217,6 +217,14 @@
                     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
                 },
                 resizeImage(item){
+                    
+                    
+                    ///////Working on this. QuerySelector is undefined.
+                    
+                    
+                    
+                    
+                    
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemName").style.width = this.list[item][2];
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemName").style.height = this.list[item][3];
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemLabel").style.width = this.list[item][2];
