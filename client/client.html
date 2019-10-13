@@ -120,8 +120,8 @@
                     <input class="itemLabel" type="text" v-model="list[item][5][subitem]">
                 </div>
                 <span v-bind:key=99999999>
-                    <button id="addButton" class="newListItemButton" v-on:click="addItemToList($event, item)">+</button>
-                    <button id="subtractButton" class="newListItemButton" v-on:click="subtractItemFromList($event, item)">-</button>
+                    <button class="addButton" v-on:click="addItemToList($event, item)">+</button>
+                    <button class="subtractButton" v-on:click="subtractItemFromList($event, item)">-</button>
                 </span>
             </transition-group>
         </div>
@@ -203,20 +203,20 @@
                     this.list[listNum][4].push("");
                     this.list[listNum][5].push("");
                     if(this.list.length >= 50){
-                        document.querySelector("#addButton").style.display = "none";
+                        e.target.parentElement.querySelector("#addButton").style.display = "none";
                     }
                     else{
-                        document.querySelector("#addButton").style.display = "inline-block";
+                        e.target.parentElement.querySelector("#addButton").style.display = "inline-block";
                     }
                 },
                 subtractItemFromList(e, listNum){
                     this.list[listNum][4].pop();
                     this.list[listNum][5].pop();
                     if(this.list.length <= 0){
-                        document.querySelector("#subtractButton").style.display = "none";
+                        e.target.parentElement.querySelector("#subtractButton").style.display = "none";
                     }
                     else{
-                        document.querySelector("#subtractButton").style.display = "inline-block";
+                        e.target.parentElement.querySelector("#subtractButton").style.display = "inline-block";
                     }
                 },
                 hexToRGBA(hex, alpha) {

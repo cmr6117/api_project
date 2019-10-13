@@ -48,6 +48,9 @@ input.itemName{
     border-bottom-width: 0; 
     border-color: #999999;
 }
+.list-move{
+    margin-left: 3px;
+}
 input.itemLabel{
     position: relative;
     top: -1px;
@@ -58,7 +61,7 @@ input.itemLabel{
     background-color: #fefefe;
     border-radius: 0;
 }
-button.newListItemButton{
+button.addButton, button.subtractButton{
     width: 50px;
     height: 120px;
     padding: 0px;
@@ -89,7 +92,7 @@ button.newListItemButton{
     max-width: 1250px;
     padding: 5px;
 }
-button.newListItemButton:hover {
+button.subtractButton:hover, button.addButton:hover{
     transform: scale(1.05);
 }
 .item:hover{
@@ -107,4 +110,7 @@ span{
 .list-enter, .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+.subtractButton{
+    display: none;
 }
