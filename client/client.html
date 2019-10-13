@@ -85,15 +85,15 @@
       
       xhr.onload = () => handleResponse(xhr, true);
       
-      
-      const name = document.querySelector('#nameField').value;
-      const age = document.querySelector('#ageField').value;
-      
-      const formData = `name=${name}&age=${age}`;
-      
-      xhr.send(formData);
-      
       e.preventDefault;
+      
+      const uuid = app.uuid;
+      const list = app.list;
+      
+      const sendData = `uuid=${uuid}&list=${list}`;
+      
+      xhr.send(sendData);
+      
       return false;
     };
 
@@ -160,6 +160,10 @@
     
     
     <form id="nameForm" action="/addUser" method="post">
+      <label for="name">Name: </label>
+      <input id="nameField" type="text" name="name" />
+      <label for="age">Age: </label>
+      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
       <input type="submit" value="Add User" />
     </form>
     

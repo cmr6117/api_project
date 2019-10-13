@@ -22,6 +22,7 @@ const getUsers = (request, response) => {
 };
 
 const addUser = (request, response, params) => {
+    console.log(`Logging: ${JSON.stringify(params)}`);
   if (!params.name || !params.age) {
     const responseJSON = {
       message: 'name and age are both required',
