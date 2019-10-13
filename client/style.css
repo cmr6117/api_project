@@ -6,6 +6,7 @@ html, body {
     text-align: center;
     margin: auto;
     background-image: url(media/background.jpg);
+    background-size: 100% auto;
 }
 input{
     text-align: center;
@@ -87,7 +88,6 @@ button.newListItemButton{
 }
 button.newListItemButton:hover {
     transform: scale(1.05);
-    transform: rotateY(180deg);
 }
 .item:hover{
     transform: scale(1.05);
@@ -97,4 +97,11 @@ button.newListItemButton:hover {
 }
 span{
     display: inline-block;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
