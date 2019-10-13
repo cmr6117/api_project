@@ -49,6 +49,8 @@ input.itemName{
     border-color: #999999;
 }
 input.itemLabel{
+    position: relative;
+    top: -1px;
     margin-top: 0px;
     border-top-width: 0;  
     border-color: #999999;
