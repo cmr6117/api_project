@@ -1,5 +1,5 @@
 {
-  "name": "http-api-assignment-ii-master",
+  "name": "api-project",
   "version": "1.0.0",
   "description": "api homework 2",
   "main": "./src/server.js",
