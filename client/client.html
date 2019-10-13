@@ -107,6 +107,11 @@
     Display URLs: <input type="checkbox" name="urlDisplay" @change="updateViewURLS($event)"><br>
     <br><br>
     <div id="listContainer">
+    <div v-if="uuid != null">
+        UUID <br>
+        <input type="text" name="uuidread" v-model="uuid" readonly>
+    </div>
+    <button>Save List</button>
     <transition-group name="list" tag="p">
         <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:key="item" v-bind:style="{backgroundColor: hexToRGBA(list[item][1],0.95)}">
             <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
@@ -115,12 +120,6 @@
             <br>
             Width: <input type="number" name="ImgWidths" class="sizeInput" v-model="list[item][2]" value=100 min=25 max=300> 
             Height: <input type="number" name="ImgHeights" class="sizeInput" v-model="list[item][3]" value=100 min=25 max=300> 
-            <div v-if="uuid == null">
-                UUID is null
-            </div>
-            <div v-else>
-                UUID is not null
-            </div>
             <transition-group name="list" tag="p">
                 <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
                     <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})`, width: `($list[item][2])`, height: `($list[item][3])` }">
