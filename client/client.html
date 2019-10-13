@@ -124,7 +124,7 @@
                     height: list[item][3],
                     }">
                     <br>
-                    <input class="itemLabel" type="text" v-model="list[item][5][subitem]" v-bind:style="width: list[item][2]">
+                    <input class="itemLabel" type="text" v-model="list[item][5][subitem]" v-bind:style="{width: list[item][2]}">
                 </div>
                 <span v-bind:key=99999999>
                     <button class="addButton" v-on:click="addItemToList($event, item)" v-if="list[item][4].length < 50">+</button>
