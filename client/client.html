@@ -113,8 +113,8 @@
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
-            Width: <input type="number" name="ImgWidths" v-model="list[item][2]" value=100 min=25 max=300> 
-            Height: <input type="number" name="ImgHeights" v-model="list[item][3]" value=100 min=25 max=300> 
+            Width: <input type="number" name="ImgWidths" v-model="list[item][2]" value=100 min=25 max=300 @change="resizeImage(item)"> 
+            Height: <input type="number" name="ImgHeights" v-model="list[item][3]" value=100 min=25 max=300 @change="resizeImage(item)"> 
             <br>
             <transition-group name="list" tag="p">
                 <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
@@ -215,6 +215,11 @@
                         g = parseInt(hex.slice(3, 5), 16),
                         b = parseInt(hex.slice(5, 7), 16);
                     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+                },
+                resizeImage(item){
+                    document.querySelectorAll(.listPanel)[item].querySelectorAll(.itemName).style.width = this.list[item][2];
+                    document.querySelectorAll(.listPanel)[item].querySelectorAll(.itemName).style.height = this.list[item][3];
+                    document.querySelectorAll(.listPanel)[item].querySelectorAll(.itemLabel).style.width = this.list[item][2];
                 }
 			}
 		})
