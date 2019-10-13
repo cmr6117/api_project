@@ -5,6 +5,7 @@ html, body {
     padding: 0;
     text-align: center;
     margin: auto;
+    background-image: url(media/background.jpg);
 }
 input{
     text-align: center;
