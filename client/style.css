@@ -98,9 +98,6 @@ button.subtractButton:hover, button.addButton:hover{
 .item:hover{
     transform: scale(1.05);
 }
-.listPanel:hover {
-    transform: scale(1.05);
-}
 span{
     display: inline-block;
 }

@@ -113,11 +113,18 @@
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
+            Width: <input type="number" name="ImgWidths" v-model="list[item][2]" value=100 min=25 max=300> 
+            Height: <input type="number" name="ImgHeights" v-model="list[item][3]" value=100 min=25 max=300> 
+            <br>
             <transition-group name="list" tag="p">
                 <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
-                    <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})` }">
+                    <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ 
+                    backgroundImage: `url(${list[item][4][subitem]})`,
+                    width: list[item][2],
+                    height: list[item][3],
+                    }">
                     <br>
-                    <input class="itemLabel" type="text" v-model="list[item][5][subitem]">
+                    <input class="itemLabel" type="text" v-model="list[item][5][subitem]" v-bind:style="width: list[item][2]">
                 </div>
                 <span v-bind:key=99999999>
                     <button class="addButton" v-on:click="addItemToList($event, item)" v-if="list[item][4].length < 50">+</button>
@@ -171,8 +178,8 @@
                         this.list.push([
                             "", //List Name, 0
                             ["#dae1ed","#d7f9ce","#efebd8","#f8cfe4","#c8cfff"][Math.floor(Math.random() * 5)], //List BG Color, 1
-                            "", //Reserved Slot, 2
-                            "", //Reserved Slot, 3
+                            100, //Widths, 2
+                            100, //Heights, 3
                             [""], //List Items, 4
                             [""] //Item Names, 5
                         ]);
