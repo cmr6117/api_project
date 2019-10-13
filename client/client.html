@@ -113,8 +113,8 @@
             <br>
             List Color: <input class="listColor" type="color" v-model="list[item][1]">
             <br>
-            Width: <input type="number" name="ImgWidths" class="sizeInput" v-model="list[item][2]" value=100 min=25 max=300 @change="resizeImage(item)"> 
-            Height: <input type="number" name="ImgHeights" class="sizeInput" v-model="list[item][3]" value=100 min=25 max=300 @change="resizeImage(item)"> 
+            Width: <input type="number" name="ImgWidths" class="sizeInput" v-model="list[item][2]" value=100 min=25 max=300> 
+            Height: <input type="number" name="ImgHeights" class="sizeInput" v-model="list[item][3]" value=100 min=25 max=300> 
             <br>
             <transition-group name="list" tag="p">
                 <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
@@ -217,14 +217,6 @@
                     return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
                 },
                 resizeImage(item){
-                    
-                    
-                    ///////Working on this. QuerySelector is undefined.
-                    
-                    
-                    
-                    
-                    
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemName").style.width = this.list[item][2];
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemName").style.height = this.list[item][3];
                     document.querySelectorAll(".listPanel")[item].querySelectorAll(".itemLabel").style.width = this.list[item][2];
