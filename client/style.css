@@ -7,13 +7,13 @@ html, body {
     margin: auto;
     background-image: url(media/background.jpg);
     background-size: 100% auto;    
-    transition: transform .2s;
+    transition: transform .5s;
 }
 input{
     text-align: center;
     word-wrap: break-word;
     margin: 2px;
-    transition: transform .2s;
+    transition: transform .5s;
 }
 input.listName{
     width: 90%;
@@ -62,7 +62,7 @@ button.newListItemButton{
     padding: 0px;
     margin-bottom: 0px;
     vertical-align: text-bottom;    
-    transition: transform .2s;
+    transition: transform .5s;
 }
 .listPanel{
     display: block;
@@ -76,7 +76,7 @@ button.newListItemButton{
     width: 90%;
     margin: auto;
     margin-bottom: 10px;
-    transition: transform .2s;
+    transition: transform .5s;
     border-radius: 10px;
     padding-top: 0px;
 }
