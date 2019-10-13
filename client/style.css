@@ -6,7 +6,8 @@ html, body {
     text-align: center;
     margin: auto;
     background-image: url(media/background.jpg);
-    background-size: 100% auto;
+    background-size: 100% auto;    
+    transition: transform .2s;
 }
 input{
     text-align: center;
