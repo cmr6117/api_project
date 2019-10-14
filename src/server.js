@@ -39,7 +39,7 @@ const onRequest = (request, response) => {
   } else if (parsedUrl.pathname === '/media/background.jpg') {
     htmlHandler.getImage(request, response);
   } else if (parsedUrl.pathname === '/getUsers') {
-    jsonHandler.getUsers(request, response);
+    jsonHandler.getUsers(request, response, parsedUrl.query);
   } else {
     jsonHandler.notFound(request, response);
   }

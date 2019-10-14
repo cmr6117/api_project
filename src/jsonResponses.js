@@ -15,11 +15,19 @@ const respondJSONMeta = (request, response, status) => {
 };
 
 
-const getUsers = (request, response) => {
+const getUsers = (request, response, uuid) => {
   if (request.method === 'HEAD') {
     return respondJSONMeta(request, response, 200);
   }
+  if(users[request.query] == null){
+    const responseJSON = {
+      message: 'An Error Ocurred. Invalid ID.',
+      id: 'badrequest',
+    };
 
+    return respondJSON(request, response, 400, responseJSON);
+  }
+  console.log(uuid);
   return respondJSON(request, response, 200, { users });
 };
 
@@ -36,7 +44,7 @@ const addUser = (request, response, params) => {
   let uuidData = params.uuid;
   let listData = params.list;
   
-  if (users[params.uuid] == null){
+  if (users[params.uuid] == null || users[params.uuid] == "0" || uuidData === ""){
       uuidData = uuidv1();
   }
 
@@ -60,6 +68,7 @@ const addUser = (request, response, params) => {
     uuid: uuidData,
   };
 
+    console.log(`Users: ${JSON.stringify(users)}`);
   return respondJSON(request, response, responseCode, responseJSON);
 };
 
