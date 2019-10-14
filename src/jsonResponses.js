@@ -60,7 +60,6 @@ const addUser = (request, response, params) => {
     uuid: uuidData,
   };
 
-    console.log(`Users: ${JSON.stringify(users)}`);
   return respondJSON(request, response, responseCode, responseJSON);
 };
 

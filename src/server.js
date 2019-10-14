@@ -29,7 +29,6 @@ const parseBody = (request, response) => {
 
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
-  console.dir(parsedUrl);
 
   if (request.method === 'POST' && parsedUrl.pathname === '/addUser') {
     parseBody(request, response);
