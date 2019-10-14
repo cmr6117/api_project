@@ -11,7 +11,7 @@
 
     const handleResponse = (xhr, parseResponse) => {
       const content = document.querySelector('#content');
-      
+      console.log(xhr)
       content.innerHTML = `<h1>Status Code: ${xhr.status}</h1>`;
       
       if(parseResponse){
@@ -29,7 +29,6 @@
         }
       }
     };
-
     const sendAjax = (e, url, method) => {
       const xhr = new XMLHttpRequest();
       
@@ -44,12 +43,9 @@
       }
       
       xhr.send();
-      
-      e.preventDefault();
+        
       return false;
     };
-
-/*
     const sendPost = (e, form) => {
       const xhr = new XMLHttpRequest();
       
@@ -63,46 +59,23 @@
       
       xhr.onload = () => handleResponse(xhr, true);
       
-      const listData = JSON.stringify(app.list);
       
-      xhr.send(listData);
+      const uuidSubmit = document.querySelector('#uuidField').value;
+      const listSubmit = document.querySelector('#listField').value;
       
-      e.preventDefault;
-      return false;
-    };
-*/
-
-    const sendPost = (e, form) => {
-      const xhr = new XMLHttpRequest();
+      const formData = `uuid=${uuidSubmit}&list=${listSubmit}`;
       
-      const url = form.getAttribute('action');
-      const method = form.getAttribute('method');
-      
-      xhr.open(method, url);
-      
-      xhr.setRequestHeader('Accept', 'application/json');
-      xhr.setRequestHeader('Content-Type', 'x-www-form-urlencoded');
-      
-      xhr.onload = () => handleResponse(xhr, true);
-      
-      e.preventDefault;
-      
-      const uuid = app.uuid;
-      const list = app.list;
-      
-      const sendData = `uuid=${uuid}&list=${list}`;
-      
-      xhr.send(sendData);
+      xhr.send(formData);
       
       return false;
     };
-
     const init = () => {
-      const nameForm = document.querySelector('#nameForm');
+      const submitForm = document.querySelector('#submitter');
       const userForm = document.querySelector('#userForm');
       
-      const nameSubmit = (e) => {
-        sendPost(e, nameForm);
+      const dataSubmit = (e) => {
+        e.preventDefault();
+        sendPost(e, submitForm);
       };
       
       const userSubmit = (e) => {
@@ -112,7 +85,7 @@
       };
       
       
-      nameForm.addEventListener('submit', nameSubmit);
+      submitForm.addEventListener('submit', dataSubmit);
       userForm.addEventListener('submit', userSubmit);
     };
 
@@ -130,11 +103,15 @@
     Display URLs: <input type="checkbox" name="urlDisplay" @change="updateViewURLS($event)"><br>
     <br><br>
     <div id="listContainer">
-    <div v-if="uuid != null">
+    <div v-if="uuid != null && uuid != 0">
         UUID <br>
         <input type="text" name="uuidread" v-model="uuid" readonly>
     </div>
-    <button>Save List</button>
+    <form id="submitter" action="/addUser" method="post">
+      <input id="uuidField" value="0" type="text" name="uuid" v-model="uuid"/>
+      <input id="listField" type="text" name="list" v-model="JSON.stringify(list)"/>
+      <input id="submitIt" type="submit" value="Save Lists" />
+    </form>
     <transition-group name="list" tag="p">
         <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:key="item" v-bind:style="{backgroundColor: hexToRGBA(list[item][1],0.95)}">
             <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
@@ -159,13 +136,6 @@
     </div>
     
     
-    <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Name: </label>
-      <input id="nameField" type="text" name="name" />
-      <label for="age">Age: </label>
-      <input id="ageField" type="number" name="age" min="0" max="100" step="1"/>
-      <input type="submit" value="Add User" />
-    </form>
     
     <form id="userForm" action="/getUsers" method="get">
       <select id='urlField'>
@@ -190,13 +160,14 @@
 				list: [],
                 visibleList: [],
                 numOfLists: 2,
-                uuid: null,
+                uuid: "",
 			},
 			methods: {
                 init(){
                     numOfLists = this.list.length;
                     this.changeNumOfLists();
                     this.autofillQueryInformation();
+                    this.uuid = "0";
                 },
                 changeNumOfLists() {
                     while(this.numOfLists>this.list.length){
