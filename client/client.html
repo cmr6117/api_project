@@ -20,8 +20,7 @@
     //Handles responses from the server
     const handleResponse = (xhr, parseResponse) => {
       const content = document.querySelector('#content');
-      
-      console.log(xhr);
+        
       const responseObj = JSON.parse(xhr.response);
       app.currentMSG = `Status Code: ${xhr.status}\n`;
       
@@ -214,7 +213,6 @@
                     e.target.parentElement.backgroundImage = "url(" + this.list[listNum][4][itemNum] + ")";
                 },
                 updateViewURLS(e){
-                    console.log(e.value);
                     document.getElementsByClassName('itemName').style.opacity = "rgba(0,0,0," + Math.random + ")";
                 },
                 //Adds Items
@@ -245,7 +243,6 @@
                     let url_string = window.location.href;
                     let url = new URL(url_string);
                     this.uuid = url.searchParams.get("uuid");
-                    console.log(this.uuid);
                 }
 			}
 		})
