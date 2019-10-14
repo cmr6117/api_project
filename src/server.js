@@ -4,8 +4,10 @@ const query = require('querystring');
 const htmlHandler = require('./htmlResponses.js');
 const jsonHandler = require('./jsonResponses.js');
 
+//Selects Port
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
+//Parses Request
 const parseBody = (request, response) => {
   const body = [];
 
@@ -26,7 +28,7 @@ const parseBody = (request, response) => {
   });
 };
 
-
+//Handles Requests
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
     
@@ -45,6 +47,7 @@ const onRequest = (request, response) => {
   }
 };
 
+//Creates Server
 http.createServer(onRequest).listen(port);
 
 console.log(`Listening on 127.0.0.1: ${port}`);
