@@ -7,25 +7,33 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
   <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    function setUUID(value){
+        app.uuid = value;
+    }
+  </script>
   <script type="text/babel">
 
     const handleResponse = (xhr, parseResponse) => {
       const content = document.querySelector('#content');
+      
       console.log(xhr)
-      content.innerHTML = `<h1>Status Code: ${xhr.status}</h1>`;
+      app.currentMSG = `Status Code: ${xhr.status}\n`;
       
       if(parseResponse){
         const responseObj = JSON.parse(xhr.response);
         
+        setUUID(responseObj.uuid);
+          
         if(responseObj.users){
-          content.innerHTML += `<p>Users: ${xhr.response}</p>`;
+          app.currentMSG += `Users: ${xhr.response}\n`;
         }
         
         if(responseObj.message) {
-          content.innerHTML += `<p>Message: ${responseObj.message}</p>`;
+          app.currentMSG += `Message: ${responseObj.message}\n`;
         }
         if(responseObj.id) {
-          content.innerHTML += `<p>Id: ${responseObj.id}</p>`;
+          app.currentMSG += `Id: ${responseObj.id}`;
         }
       }
     };
@@ -71,14 +79,15 @@
     };
     const init = () => {
       const submitForm = document.querySelector('#submitter');
-      const userForm = document.querySelector('#userForm');
+      const requestForm = document.querySelector('#requester');
       
       const dataSubmit = (e) => {
         e.preventDefault();
         sendPost(e, submitForm);
       };
       
-      const userSubmit = (e) => {
+      const dataRequest = (e) => {
+        e.preventDefault();
         const url = document.querySelector('#urlField').value;
         const method = document.querySelector('#methodSelect').value;
         sendAjax(e, url, method);
@@ -86,69 +95,75 @@
       
       
       submitForm.addEventListener('submit', dataSubmit);
-      userForm.addEventListener('submit', userSubmit);
+      requestForm.addEventListener('submit', dataRequest);
     };
 
     window.onload = init;
   </script>
 </head>
 <body>
-  <section id="content">
-  </section>
   <section id="root">
-    <h1>Image List</h1>
-    <div>{{list}}</div>
-    Number Of Lists: <input type="number" name="Entries" class="sizeInput" v-model="numOfLists" value=2 min=0 max=15 @change="changeNumOfLists"> 
-    <br>
-    Display URLs: <input type="checkbox" name="urlDisplay" @change="updateViewURLS($event)"><br>
-    <br><br>
-    <div id="listContainer">
-    <div v-if="uuid != null && uuid != 0">
-        UUID <br>
-        <input type="text" name="uuidread" v-model="uuid" readonly>
-    </div>
-    <form id="submitter" action="/addUser" method="post">
-      <input id="uuidField" value="0" type="text" name="uuid" v-model="uuid"/>
-      <input id="listField" type="text" name="list" v-model="JSON.stringify(list)"/>
-      <input id="submitIt" type="submit" value="Save Lists" />
-    </form>
-    <transition-group name="list" tag="p">
-        <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:key="item" v-bind:style="{backgroundColor: hexToRGBA(list[item][1],0.95)}">
-            <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
-            <br>
-            List Color: <input class="listColor" type="color" v-model="list[item][1]">
-            <br>
-            Width: <input type="number" name="ImgWidths" class="sizeInput" v-model="list[item][2]" value=100 min=25 max=300> 
-            Height: <input type="number" name="ImgHeights" class="sizeInput" v-model="list[item][3]" value=100 min=25 max=300> 
-            <transition-group name="list" tag="p">
-                <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
-                    <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})`, width: `($list[item][2])`, height: `($list[item][3])` }">
-                    <br>
-                    <input class="itemLabel" type="text" v-model="list[item][5][subitem]" v-bind:style="{ width: `($list[item][2])` }">
-                </div>
-                <span v-bind:key=99999999>
-                    <button class="addButton" v-on:click="addItemToList($event, item)" v-if="list[item][4].length < 50">+</button>
-                    <button class="subtractButton" v-on:click="subtractItemFromList($event, item)" v-if="list[item][4].length > 0">-</button>
-                </span>
-            </transition-group>
+    <div id="titleSeal">
+        <h1>Image List</h1>
+        Number Of Lists: <input type="number" name="Entries" class="sizeInput" v-model="numOfLists" value=2 min=0 max=15 @change="changeNumOfLists"> 
+        <br>
+        <div id="listContainer">
+            {{currentMSG}}<br>
+            <div>
+                ID:   
+                <input type="text" name="uuidread" v-model="uuid" style="width: 260px">
+            </div>
+            <form id="submitter" action="/addUser" method="post">
+              <input id="uuidField" value="0" type="text" name="uuid" v-model="uuid"/>
+              <input id="listField" type="text" name="list" v-model="JSON.stringify(list)"/>
+              <input id="submitIt" type="submit" value="Save Lists To ID" />
+            </form>
+            <form id="requester" action="/getUsers" method="get">
+              <input id="uuidField" value="0" type="text" name="uuid" v-model="uuid"/>
+              <input id="listField" type="text" name="list" v-model="JSON.stringify(list)"/>
+              <input id="submitIt" type="submit" value="Load Lists From ID" />
+            </form>
+            
+            <form id="userForm" action="/getUsers" method="get" style="display: none">
+              <select id='urlField'>
+                <option value='/getUsers'>/getUsers</option>
+                <option value='/notReal'>/notReal</option>
+              </select>
+              <select id="methodSelect">
+                <option value="get">GET</option>
+                <option value="head">HEAD</option>
+              </select>
+              <input type="submit" value="Get User" />
+            </form>
+            
         </div>
-    </transition-group>
     </div>
-    
-    
-    
-    <form id="userForm" action="/getUsers" method="get">
-      <select id='urlField'>
-        <option value='/getUsers'>/getUsers</option>
-        <option value='/notReal'>/notReal</option>
-      </select>
-      <select id="methodSelect">
-        <option value="get">GET</option>
-        <option value="head">HEAD</option>
-      </select>
-      <input type="submit" value="Get User" />
-    </form>
-    
+    <div id="rootCSS">
+        <transition-group name="list" tag="p">
+            <div class="listPanel" v-for="item in genIntList(numOfLists)" v-bind:key="item" v-bind:style="{backgroundColor: hexToRGBA(list[item][1],0.95)}">
+                <input placeholder="List Name" class="listName" type="text" v-model="list[item][0]">
+                <br>
+                List Color: <input class="listColor" type="color" v-model="list[item][1]">
+                <br>
+                Width: <input type="number" name="ImgWidths" class="sizeInput" v-model="list[item][2]" value=100 min=25 max=300> 
+                Height: <input type="number" name="ImgHeights" class="sizeInput" v-model="list[item][3]" value=100 min=25 max=300> 
+                <transition-group name="list" tag="p">
+                    <div class="item" v-for="subitem in genIntList(list[item][4].length)" v-bind:key="subitem">
+                        <input onClick="this.select();" placeholder="Paste Image URL" class="itemName" type="text" v-model="list[item][4][subitem]" @change="updateItemURL($event, item, subitem)" v-bind:style="{ backgroundImage: `url(${list[item][4][subitem]})`, width: `($list[item][2])`, height: `($list[item][3])` }">
+                        <br>
+                        <input class="itemLabel" type="text" v-model="list[item][5][subitem]" v-bind:style="{ width: `($list[item][2])` }">
+                    </div>
+                    <span v-bind:key=99999999>
+                        <button class="addButton" v-on:click="addItemToList($event, item)" v-if="list[item][4].length < 50">+</button>
+                        <button class="subtractButton" v-on:click="subtractItemFromList($event, item)" v-if="list[item][4].length > 0">-</button>
+                    </span>
+                </transition-group>
+            </div>
+        </transition-group>
+
+
+
+    </div>
   </section>
   <section id="content">
   </section>
@@ -161,13 +176,14 @@
                 visibleList: [],
                 numOfLists: 2,
                 uuid: "",
+                currentMSG: ""
 			},
 			methods: {
                 init(){
                     numOfLists = this.list.length;
                     this.changeNumOfLists();
                     this.autofillQueryInformation();
-                    this.uuid = "0";
+                    this.uuid = ``;
                 },
                 changeNumOfLists() {
                     while(this.numOfLists>this.list.length){

@@ -69,7 +69,7 @@ button.addButton, button.subtractButton{
     vertical-align: text-bottom;    
     transition: transform .5s;
 }
-.listPanel{
+.listPanel, #rootCSS, #titleSeal{
     display: block;
     border-color: #222222;
     border-style: solid;
@@ -84,6 +84,10 @@ button.addButton, button.subtractButton{
     transition: transform .5s;
     border-radius: 10px;
     padding-top: 0px;
+}
+#rootCSS{
+    background-color: rgba(200,200,200,0.4);
+    margin-top: 210px;
 }
 #listContainer{
     display: block;
@@ -114,9 +118,20 @@ span{
 .sizeInput{
     width: 50px;
 }
-/*form input{
+form input{
     display: none;
 }
 form input#submitIt{
     display: inline-block;
-}*/
+}
+#titleSeal{
+    border-color: rgba(150,150,150,0.5);
+    background-size: 100% auto; 
+    background-color: rgba(245,222,228,0.9);
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    transform: scale(1.0);
+    z-index: 1;
+    border-radius: 0;
+}

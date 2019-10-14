@@ -24,18 +24,9 @@ const getUsers = (request, response) => {
 };
 
 const addUser = (request, response, params) => {
-  if (!params.uuid || !params.list) {
+  if (!params.list) {
     const responseJSON = {
-      message: 'name and age are both required',
-      id: 'badrequest',
-    };
-
-    return respondJSON(request, response, 400, responseJSON);
-  }
-  
-  if (users[params.uuid] == null) {
-    const responseJSON = {
-      message: 'invalid',
+      message: 'An Error Ocurred. List is invalid.',
       id: 'badrequest',
     };
 
@@ -45,8 +36,8 @@ const addUser = (request, response, params) => {
   let uuidData = params.uuid;
   let listData = params.list;
   
-  if (uuidData == "0"){
-      uuid = uuidv1();
+  if (users[params.uuid] == null){
+      uuidData = uuidv1();
   }
 
   let responseCode = 201;
@@ -65,7 +56,7 @@ const addUser = (request, response, params) => {
   }
 
   const responseJSON = {
-    message: 'created successfully',
+    message: 'Successfully saved ',
     uuid: uuidData,
   };
 
