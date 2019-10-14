@@ -1,10 +1,11 @@
 const fs = require('fs');
 
+//File Paths
 const client = fs.readFileSync(`${__dirname}/../client/client.html`);
 const style = fs.readFileSync(`${__dirname}/../client/style.css`);
 const image = fs.readFileSync(`${__dirname}/../client/media/background.jpg`);
 
-
+//Index Request
 const getIndex = (request, response) => {
   const headers = {
     'Content-Type': 'text/html',
@@ -15,6 +16,7 @@ const getIndex = (request, response) => {
   response.end();
 };
 
+//Style Request
 const getStyle = (request, response) => {
   const headers = {
     'Content-Type': 'text/css',
@@ -25,6 +27,7 @@ const getStyle = (request, response) => {
   response.end();
 };
 
+//Image Request
 const getImage = (request, response) => {
   const headers = {
     'Content-Type': 'image/jpeg',

@@ -1,20 +1,21 @@
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require('uuid/v1'); //npm install uuid, used to generate unique ids
 
-const users = { "0":"New UUID" };
+const users = { "0":"New UUID" }; //List Storage
 
+//Full Response
 const respondJSON = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
   response.write(JSON.stringify(object));
   response.end();
 };
 
-
+//Metadata Response
 const respondJSONMeta = (request, response, status) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
   response.end();
 };
 
-
+//Recalls a list via its UUID
 const getUsers = (request, response, uuid) => {
   if (request.method === 'HEAD') {
     return respondJSONMeta(request, response, 200);
@@ -29,7 +30,8 @@ const getUsers = (request, response, uuid) => {
   return respondJSON(request, response, 200, { "list":users[uuid].list, "uuid":uuid });
 };
 
-const addUser = (request, response, params) => {
+//Generates a new UUID and saves list under it
+const addUser = (request, response, params) => { 
   if (!params.list) {
     const responseJSON = {
       message: 'An Error Ocurred. List is invalid.',
@@ -59,6 +61,7 @@ const addUser = (request, response, params) => {
   return respondJSON(request, response, responseCode, responseJSON);
 };
 
+//Resource not found
 const notFound = (request, response) => {
   if (request.method === 'HEAD') {
     return respondJSONMeta(request, response, 404);

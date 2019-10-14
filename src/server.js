@@ -30,15 +30,15 @@ const parseBody = (request, response) => {
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
     
-  if (request.method === 'POST' && parsedUrl.pathname === '/addUser') {
+  if (request.method === 'POST' && parsedUrl.pathname === '/addUser') { //List Submit
     parseBody(request, response);
-  } else if (parsedUrl.pathname === '/') {
+  } else if (parsedUrl.pathname === '/') { //App Page
     htmlHandler.getIndex(request, response);
-  } else if (parsedUrl.pathname === '/style.css') {
+  } else if (parsedUrl.pathname === '/style.css') { //Stylesheet
     htmlHandler.getStyle(request, response);
-  } else if (parsedUrl.pathname === '/media/background.jpg') {
+  } else if (parsedUrl.pathname === '/media/background.jpg') { //Background For App
     htmlHandler.getImage(request, response);
-  } else if (parsedUrl.pathname === '/getUsers') {
+  } else if (parsedUrl.pathname === '/getUsers') { //List Request
     jsonHandler.getUsers(request, response, parsedUrl.query);
   } else {
     jsonHandler.notFound(request, response);
