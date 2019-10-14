@@ -29,7 +29,7 @@ const parseBody = (request, response) => {
 
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
-
+    
   if (request.method === 'POST' && parsedUrl.pathname === '/addUser') {
     parseBody(request, response);
   } else if (parsedUrl.pathname === '/') {

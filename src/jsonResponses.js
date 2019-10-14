@@ -19,16 +19,14 @@ const getUsers = (request, response, uuid) => {
   if (request.method === 'HEAD') {
     return respondJSONMeta(request, response, 200);
   }
-  if(users[request.query] == null){
+  if(users[uuid] == null){
     const responseJSON = {
       message: 'An Error Ocurred. Invalid ID.',
       id: 'badrequest',
     };
-
     return respondJSON(request, response, 400, responseJSON);
   }
-  console.log(uuid);
-  return respondJSON(request, response, 200, { users });
+  return respondJSON(request, response, 200, { "list":users[uuid].list, "uuid":uuid });
 };
 
 const addUser = (request, response, params) => {
@@ -41,34 +39,23 @@ const addUser = (request, response, params) => {
     return respondJSON(request, response, 400, responseJSON);
   }
   
-  let uuidData = params.uuid;
-  let listData = params.list;
+  let uuidData = uuidv1();
   
-  if (users[params.uuid] == null || users[params.uuid] == "0" || uuidData === ""){
-      uuidData = uuidv1();
-  }
-
   let responseCode = 201;
 
-  if (users[params.uuid]) {
+  if (users[uuidData]) {
     responseCode = 204;
   } else {
-    users[params.uuid] = {};
-    users[params.uuid].uuid = params.uuid;
+    users[uuidData] = {};
+    users[uuidData].uuid = uuidData;
   }
 
-  users[params.uuid].list = params.list;
-
-  if (responseCode === 204) {
-    return respondJSONMeta(request, response, responseCode);
-  }
+  users[uuidData].list = params.list;
 
   const responseJSON = {
     message: 'Successfully saved ',
     uuid: uuidData,
   };
-
-    console.log(`Users: ${JSON.stringify(users)}`);
   return respondJSON(request, response, responseCode, responseJSON);
 };
 
